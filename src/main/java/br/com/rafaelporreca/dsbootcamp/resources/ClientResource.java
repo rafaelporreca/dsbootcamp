@@ -12,7 +12,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 
-@RestController("/clients")
+@RestController
+@RequestMapping("/clients")
 public class ClientResource {
 
     private ClientService clientService;
@@ -22,6 +23,7 @@ public class ClientResource {
         this.clientService = clientService;
     }
 
+    @GetMapping
     public ResponseEntity<Page<ClientDTO>> findAll(
             @RequestParam(value = "page", defaultValue = "0") Integer page,
             @RequestParam(value = "linesPerPage", defaultValue = "12") Integer linesPerPage,
